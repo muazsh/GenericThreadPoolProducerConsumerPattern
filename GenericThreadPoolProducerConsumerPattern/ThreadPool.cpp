@@ -19,9 +19,7 @@ void ThreadPool::AddTask(std::shared_ptr<ITask> task) {
 }
 
 void ThreadPool::Kill() {
-	std::unique_lock<std::mutex> lck(*m_workerMutex);
 	m_runningWorkers = false;
-	lck.unlock();
 	m_taskConditionVariable->notify_all();
 	m_workerConditionVariable->notify_all();
 }
