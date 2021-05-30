@@ -1,4 +1,4 @@
-# Generic ThreadPool Producer/Consumer Pattern
+# Generic Thread Pool Producer/Consumer Pattern
 
 Producer/Consumer is one of the standard concurrency problems and the most addressed one, and when such a problem pops up thread pool is of concern also as resources are limited and it makes no sense to start a new thread whenever a new task (producer or consumer) comes.
 
