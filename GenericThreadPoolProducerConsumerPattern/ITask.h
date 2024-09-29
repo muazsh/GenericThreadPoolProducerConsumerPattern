@@ -2,9 +2,12 @@
 #ifndef ITASK
 #define ITASK
 
-class ITask {
-public:
-	virtual void Start() = 0;
-};
+namespace gtppcp {
+	class ITask {
+	public:
+		virtual ~ITask() = default;
+		virtual void Start() = 0;
+	};
+}
 
 #endif // !ITASK

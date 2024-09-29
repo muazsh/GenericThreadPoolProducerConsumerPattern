@@ -1,4 +1,8 @@
-#include "pch.h"
+#include <gtest/gtest.h>
+#include <list>
+#include "Producer.h"
+#include "Consumer.h"
+#include "ThreadPool.h"
 
 TEST(ProducerConsumerPattern, ConsumeAllProducedItems) {
 
@@ -19,15 +23,15 @@ TEST(ProducerConsumerPattern, ConsumeAllProducedItems) {
     auto runCond = [&]() {return atomic_count_prod < 1000 || lst->size() > 0; };
     auto runCondPro = [&]() {return atomic_count_prod < 1000; };
 
-    ThreadPool threadPool(6, cvTask);
-    auto producer1 = std::make_shared<Producer<int, Produce, RunCondPro>>(lst, cvTask, mtx, produce1, runCondPro);
-    auto producer2 = std::make_shared<Producer<int, Produce, RunCondPro>>(lst, cvTask, mtx, produce2, runCondPro);
+    gtppcp::ThreadPool threadPool(6, cvTask);
+    auto producer1 = std::make_shared<gtppcp::Producer<int, Produce, RunCondPro>>(lst, cvTask, mtx, produce1, runCondPro);
+    auto producer2 = std::make_shared<gtppcp::Producer<int, Produce, RunCondPro>>(lst, cvTask, mtx, produce2, runCondPro);
     threadPool.AddTask(producer1);
     threadPool.AddTask(producer2);
 
     for (int i = 0; i < 4; i++)
     {
-        auto cons = std::make_shared<Consumer<int, Consume, RunCond>>(lst, cvTask, mtx, consume, runCond);
+        auto cons = std::make_shared<gtppcp::Consumer<int, Consume, RunCond>>(lst, cvTask, mtx, consume, runCond);
         threadPool.AddTask(cons);
     }
 

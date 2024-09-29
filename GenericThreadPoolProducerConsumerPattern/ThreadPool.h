@@ -10,21 +10,23 @@
 #include "Worker.h"
 #include <functional>
 
-class ThreadPool {
-	int m_poolSize;
-	std::shared_ptr<std::queue<std::shared_ptr<ITask>>> m_tasks;
-	std::shared_ptr<std::condition_variable> m_workerConditionVariable;
-	std::shared_ptr<std::condition_variable> m_taskConditionVariable;
-	std::shared_ptr<std::mutex> m_workerMutex;
-	std::list<Worker> m_workers;
-	std::list<std::thread> m_pool;
-	bool m_runningWorkers = true;
+namespace gtppcp {
+	class ThreadPool {
+		std::size_t m_poolSize;
+		std::shared_ptr<std::queue<std::shared_ptr<ITask>>> m_tasks;
+		std::shared_ptr<std::condition_variable> m_workerConditionVariable;
+		std::shared_ptr<std::condition_variable> m_taskConditionVariable;
+		std::shared_ptr<std::mutex> m_workerMutex;
+		std::list<Worker> m_workers;
+		std::list<std::thread> m_pool;
+		bool m_runningWorkers = true;
 
-public:
-	ThreadPool(int size, std::shared_ptr<std::condition_variable>& taskConditionVariable);
-	void AddTask(std::shared_ptr<ITask> task);
-	void Kill();
-	void Wait();
-};
+	public:
+		ThreadPool(std::size_t size, std::shared_ptr<std::condition_variable>& taskConditionVariable);
+		void AddTask(std::shared_ptr<ITask> task);
+		void Kill();
+		void Wait();
+	};
+}
 
 #endif // !THREAD_POOL
