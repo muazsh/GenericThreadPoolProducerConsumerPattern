@@ -382,3 +382,4 @@ cmake_install.cmake
 /Test/test[1]_tests.cmake
 /Test/test[1]_include.cmake
 /Test/test[1]_tests.cmake
+Test/test\[1\]_include.cmake
