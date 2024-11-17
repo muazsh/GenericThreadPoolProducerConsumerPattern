@@ -2,13 +2,14 @@
 #ifndef THREAD_POOL
 #define THREAD_POOL
 
+#include "ITask.h"
+#include "Worker.h"
 #include <memory>
 #include <queue>
 #include <condition_variable>
-#include "ITask.h"
 #include <list>
-#include "Worker.h"
 #include <functional>
+#include <thread>
 
 namespace gtppcp {
 	class ThreadPool {
