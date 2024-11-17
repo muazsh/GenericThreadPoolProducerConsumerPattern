@@ -1,4 +1,4 @@
-[![MSBuild](https://github.com/muazsh/GenericThreadPoolProducerConsumerPattern/actions/workflows/msbuild.yml/badge.svg)](https://github.com/muazsh/GenericThreadPoolProducerConsumerPattern/actions/workflows/msbuild.yml)
+[![CMake on multiple platforms](https://github.com/muazsh/GenericThreadPoolProducerConsumerPattern/actions/workflows/cmake-multi-platform.yml/badge.svg)](https://github.com/muazsh/GenericThreadPoolProducerConsumerPattern/actions/workflows/cmake-multi-platform.yml)
 
 # Generic Thread Pool Producer/Consumer Pattern
 
